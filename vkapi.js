@@ -18,6 +18,7 @@ function createRequest(reqMethod, url) {
             break;
         case 'getAlbumsGroup':
         case 'getPhotoAlbum':
+        case 'getPhoto':
             script.src = url;
             break;
         default:
@@ -30,17 +31,20 @@ function getURLGroups() {
         let param = 'extended=1&count=10&fields=photo_50';
         return 'https://api.vk.com/method/groups.get?'+param+'&access_token='+getVKToken()+'&v=5.52&callback=drawArea';
 }
-/* callback функция для: groups */
+/* callback функция для: groups, getAlbums */
 /* TODO переписать параметр title */
 function drawArea(result) {
+    console.log(result);
     let items = result.response.items,
         cfg = [];
     for (let i=0; i<items.length; i++) {
         cfg[i]= {
-            name: items[i].screen_name,
+            name: items[i].screen_name || items[i].title,
             id: items[i].id,
-            photo: items[i].photo_50,
-            title: 'группы'
+            photo: items[i].photo_50 || items[i].thumb_src,
+            title: 'группы/альбомы',
+            owner: items[i].name || items[i].owner_id,
+            type: items[i].type
         }
     }
     createAreaOptionsList(cfg);
@@ -48,9 +52,12 @@ function drawArea(result) {
 /* Заполняем окно optionsVK. Использовать для вёрстки списка с полями name, id, photo */
 function createAreaOptionsList(cfg) {
     let output;
-    output = '<div class="pm_frame_title pm_title">'+cfg[1].title+'</div>';
+    output = '<div class="pm_frame_title pm_title" data-type="'+'">'+cfg[1].title+'</div>';
     for (let i = 0; i<cfg.length; i++) {
-        output += '<div class="pm_frame_optionsCell" data-name="'+cfg[i].name+'"'+' data-id="'+cfg[i].id+'">' +
+        let type = cfg[i].type ? cfg[i].type : '';
+        output += '<div class="pm_frame_optionsCell" data-name="'+
+            cfg[i].name+'"'+' data-id="'+cfg[i].id+
+            '" data-owner="'+cfg[i].owner+'" data-type="'+type+'">' +
             '<div class="">'+cfg[i].name+'</div>' +
             '<img src="'+cfg[i].photo+'" class="miniPhoto">' +
             '</div>'
@@ -58,51 +65,31 @@ function createAreaOptionsList(cfg) {
     windowOptionsVK.innerHTML = output;
     windowOptionsVK.addEventListener('click', optionsActivateVK);
 }
-
-
 /* TODO поправить. Работает только на div, при клике на надпись - не работает */
 function optionsActivateVK() {
-    let nameLink = event.target.dataset.name;
-    let linkId = event.target.dataset.id;
-    let url = 'https://api.vk.com/method/photos.getAlbums?owner_id=-'+linkId+'&need_covers=1&v=5.52&callback=consoleLogGetAlbums';
-    createRequest('getAlbumsGroup', url);
-}
-
-function consoleLogGetAlbums(result) {
-    createAlbums(result, 'vk')
-}
-/* TODO объеденить с createWindowOptions и сделать универсальным */
-function createAlbums(result, api) {
-    let frame = api === 'vk' ? windowOptionsVK : windowOptionsVK,
-        items = result.response.items,
-        output = '<div class="pm_frame_title pm_title">VK-albums</div>';
-    for (let i = 0; i<items.length; i++) {
-        output += '<div class="pm_frame_optionsCell" data-owner="'+items[i].owner_id+'"'+' data-id="'+items[i].id+'">' +
-            '<div class="">'+items[i].title+'</div>' +
-            '<img src="'+items[i].thumb_src+'" class="miniPhoto">' +
-            '</div>'
-    }
-    frame.innerHTML = output;
-    /* TODO спилить позже, когда дополнится логкика */
-    /* добавляет data атрибут для обработки клика */
-    if (api === 'vk') {
-        windowOptionsVK.addEventListener('click', clickAlmumsVK);
-        windowOptionsVK.dataset.type = 'vk';
+    let cfg = {
+        name: event.target.dataset.name,
+        id: event.target.dataset.id,
+        owner: event.target.dataset.owner
+    },
+        type = event.target.dataset.type;
+    if (type) {
+        createRequest('getAlbumsGroup', getUrlAlbums(cfg));
+    } else {
+        createRequest('getPhoto', getUrlPhotos(cfg));
     }
 }
+/* отдаёт ссылку для запроса получения альбомов группы */
+function getUrlAlbums(cfg) {
+    return 'https://api.vk.com/method/photos.getAlbums?owner_id=-'+cfg.id+'&need_covers=1&v=5.52&callback=drawArea';
+}
+/* отдаёт ссылку для запроса получения фотографий альбома */
+function getUrlPhotos(cfg) {
+    return 'https://api.vk.com/method/photos.get?owner_id='+cfg.owner+'&album_id='+cfg.id+'&count=20&v=5.52&callback=responsePhoto';
+}
 
-function clickAlbumsVK () {
-    let owner = event.target.dataset.owner;
-    let id = event.target.dataset.id;
-    let url = 'https://api.vk.com/method/photos.get?owner_id=-'+owner+'&album_id='+id+'&v=5.52&callback=getPhotosAlbum';
-    createRequest('getPhotoAlbum', url);
-}
-/*  */
-function getPhotosAlbum() {
-    createPhotoList();
-    console.log();
-}
-/*  */
-function createPhotoList() {
-    console.log('photolist');
+function responsePhoto(result) {
+    photoSet = result.response.items;
+    drawPhotoTile();
+    showBigPhoto();
 }
