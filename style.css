@@ -1,0 +1,76 @@
+body {
+    background: #191919;
+    display: flex;
+    flex-direction: column;
+    color: #E3E3E3;
+}
+
+.pm {
+    display: flex;
+    flex-direction: row;
+}
+
+.pm_generalPage {
+    height: 650px;
+    width: 980px;
+}
+
+.pm_toolsPage {
+    height: 50px;
+    width: 980px;
+    margin-bottom: 0;
+    display: flex;
+    overflow: hidden;
+}
+
+.pm_leftTitle {
+    height: 100%;
+    width: 35px;
+}
+
+.pm_showPhoto__bigPhoto {
+    max-width: 950px;
+    max-height: 650px;
+}
+
+.miniPhoto {
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.pm_frame_options {
+    height: 320px;
+    width: 450px;
+}
+
+.pm_frame_commands {
+    height: 380px;
+    width: 450px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.pm_frame_title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pm_title {
+    color: #222222;
+    background: peru;
+}
+
+.pm_frame_optionsCell {
+    display: flex;
+    justify-content: space-between;
+    border: 1px groove lemonchiffon;
+    margin: 5px;
+    padding: 1px;
+}
+
+.pm_frame {
+    background: #222222;
+    border: 1px groove #E3E3E3;
+    margin: 20px;
+}
