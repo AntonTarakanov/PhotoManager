@@ -10,7 +10,7 @@ let photoSet = [];
 
 buttonVK.addEventListener('click', vkActivate);
 bigPhotoArea.addEventListener('click', togglePhoto);
-savePhoto.addEventListener('click', savePhoto);
+//savePhoto.addEventListener('click', savePhoto);
 
 function vkActivate() {
     windowOptionsPM.style.display = 'none';
@@ -19,7 +19,17 @@ function vkActivate() {
 }
 
 function drawPhotoTile() {
-    
+    let tileView;
+    tileView = '<div class="pm_frame_title pm_title" data-type="'+'">Фото плиткой</div><div class="pm_showInfo__tileView">';
+    for (let i=0; i<photoSet.length; i++) {
+        tileView += '<div class="pm_showInfo__tile" data-name="" data-id=""' +
+            '" data-owner="" data-type="">' +
+            '<img src="'+photoSet[i].photo_75+'" class="pm_showPhoto__middlePhoto">' + /* photo_130 */
+            '</div>'
+    }
+    tileView += '</div>';
+    windowOptionsVK.innerHTML = tileView;
+    console.log(photoSet);
 }
 
 function showBigPhoto() {

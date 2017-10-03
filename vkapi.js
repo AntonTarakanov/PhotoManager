@@ -59,7 +59,7 @@ function createAreaOptionsList(cfg) {
             cfg[i].name+'"'+' data-id="'+cfg[i].id+
             '" data-owner="'+cfg[i].owner+'" data-type="'+type+'">' +
             '<div class="">'+cfg[i].name+'</div>' +
-            '<img src="'+cfg[i].photo+'" class="miniPhoto">' +
+            '<img src="'+cfg[i].photo+'" class="pm_showPhoto__miniPhoto">' +
             '</div>'
     }
     windowOptionsVK.innerHTML = output;
@@ -85,7 +85,7 @@ function getUrlAlbums(cfg) {
 }
 /* отдаёт ссылку для запроса получения фотографий альбома */
 function getUrlPhotos(cfg) {
-    return 'https://api.vk.com/method/photos.get?owner_id='+cfg.owner+'&album_id='+cfg.id+'&count=20&v=5.52&callback=responsePhoto';
+    return 'https://api.vk.com/method/photos.get?owner_id='+cfg.owner+'&album_id='+cfg.id+'&count=50&v=5.52&callback=responsePhoto';
 }
 
 function responsePhoto(result) {

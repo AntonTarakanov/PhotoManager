@@ -33,14 +33,20 @@ body {
     max-height: 650px;
 }
 
-.miniPhoto {
+.pm_showPhoto__miniPhoto {
     max-width: 20px;
     max-height: 20px;
+}
+
+.pm_showPhoto__middlePhoto {
+    max-width: 65px;
+    max-height: 65px;
 }
 
 .pm_frame_options {
     height: 320px;
     width: 450px;
+    overflow: auto;
 }
 
 .pm_frame_commands {
@@ -73,4 +79,18 @@ body {
     background: #222222;
     border: 1px groove #E3E3E3;
     margin: 20px;
+}
+
+.pm_showInfo__tileView {
+    overflow: auto;
+
+}
+
+.pm_showInfo__tile {
+    overflow: hidden;
+    margin: 3px;
+    display: inline-block;
+    height: 65px;
+    width: 65px;
+    border: 1px groove deeppink;
 }
