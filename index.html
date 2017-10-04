@@ -6,40 +6,54 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-<div class="pm">
-    <div>
-        <div class="pm_generalPage pm_frame">
-            <img src="photo/DSC06425.JPG" class="pm_showPhoto__bigPhoto" id="bigPhotoArea">
+
+<div class="pm border">
+
+    <div class="pm_show border">
+
+        <div class="pm_show__bigInformation borderTwo">
+            <!--<img src="photo/DSC06425.JPG" class="pm_showPhoto__bigPhoto" id="bigPhotoArea">-->
         </div>
-        <div class="pm_toolsPage pm_frame">
-            <div class="pm_leftTitle pm_title">Tools</div>
-            <button id="SavePhoto">Save Photo</button>
+
+        <div class="pm_show__toolsPage borderTwo">
+            <!--<div class="pm_leftTitle pm_title">Tools</div>
+            <button id="SavePhoto" class="pm_tools_around-button">Save Photo</button>-->
         </div>
+
     </div>
 
-    <div>
-        <div class="pm_frame_options pm_frame" id="windowOptionsPM">
+    <div class="pm_action border">
+
+        <div class="pm_action__fastConfiguration borderTwo"></div>
+
+        <div class="pm_action__command borderTwo"></div>
+
+        <!--<div class="pm_frame_options pm_frame" id="windowOptionsPM">
             <div class="pm_frame_title pm_title">Заголовок/Надпись - информация</div>
             <div>пример Наименование: </div>
             <div>пример Оценка: </div>
             <div>пример Категории: </div>
         </div>
+
         <div class="pm_frame_options pm_frame" id="windowOptionsVK" style="display: none;"></div>
         <div class="pm_frame_options pm_frame" id="windowOptionsConnect" style="display: none;"></div>
 
-        <div class="pm_frame_commands pm_frame" id="windowCommandsPM">
+        <div class="pm_frame_commands pm_frame pm_no-bottom-margin" id="windowCommandsPM">
             <div class="pm_frame_title pm_title">Заголовок/Надпись - команды</div>
             <button>Загрузить/получить(random) photo</button>
             <button>Сохранить в файл адрес фото</button>
             <button id="buttonVK">Поработаем в ВК</button>
             <button>Поработаем с instagram</button>
-        </div>
+        </div>-->
+
     </div>
+
 </div>
 
 <script type="text/javascript" src="./script.js"></script>
 <script type="text/javascript" src="./vkapi.js"></script>
 <script type="text/javascript" src="./token.js"></script>
+<script type="text/javascript" src="./render.js"></script>
 <!--<script type="text/javascript" src="./instagramapi.js"></script>-->
 <!--<script type="text/javascript" src="./photoTools.js"></script>-->
 </body>

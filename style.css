@@ -4,24 +4,64 @@ body {
     flex-direction: column;
     color: #E3E3E3;
 }
+/* TODO временный стиль. Удалить. */
+.border {
+    border: 2px groove seagreen;
+}
+
+.borderTwo {
+    border: 2px groove wheat;
+}
 
 .pm {
     display: flex;
-    flex-direction: row;
 }
 
-.pm_generalPage {
+.pm_show {
+    height: 90%;
+    width: 80%;
+    min-width: 600px;
+    overflow: hidden; /* repeated */
+    margin: 10px;
+}
+
+.pm_action {
+    height: 90%;
+    width: 15%;
+    overflow: hidden; /* repeated */
+    margin: 10px;
+}
+
+.pm_show__bigInformation {
     height: 650px;
-    width: 980px;
+    width: 100%;
+    min-width: 600px;
+    overflow: hidden; /* repeated */
 }
 
-.pm_toolsPage {
+.pm_show__toolsPage {
     height: 50px;
-    width: 980px;
-    margin-bottom: 0;
-    display: flex;
-    overflow: hidden;
+    width: 100%;
+    display: flex; /* repeated */
+    overflow: hidden; /* repeated */
 }
+
+.pm_action__fastConfiguration {
+    overflow: hidden; /* repeated */
+    height: 500px;
+    width: 100%;
+}
+/* TODO придумать более подходящее название */
+.pm_action__command {
+    overflow: hidden; /* repeated */
+    height: 200px;
+    width: 100%;
+}
+
+
+
+
+
 
 .pm_leftTitle {
     height: 100%;
@@ -29,8 +69,8 @@ body {
 }
 
 .pm_showPhoto__bigPhoto {
-    max-width: 950px;
-    max-height: 650px;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .pm_showPhoto__miniPhoto {
@@ -39,19 +79,19 @@ body {
 }
 
 .pm_showPhoto__middlePhoto {
-    max-width: 65px;
-    max-height: 65px;
+    max-width: 75px;
+    max-height: 75px;
 }
 
 .pm_frame_options {
     height: 320px;
-    width: 450px;
+    width: 100%;
     overflow: auto;
 }
 
 .pm_frame_commands {
     height: 380px;
-    width: 450px;
+    width: 100%; /* 450px */
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -64,7 +104,7 @@ body {
 
 .pm_title {
     color: #222222;
-    background: peru;
+    background: seagreen;
 }
 
 .pm_frame_optionsCell {
@@ -94,3 +134,13 @@ body {
     width: 65px;
     border: 1px groove deeppink;
 }
+
+.pm_tools_around-button {
+    height: 45px;
+    width: 45px;
+}
+/* TODO убрать */
+.pm_no-bottom-margin {
+    margin-bottom: 0px !important;
+}
+

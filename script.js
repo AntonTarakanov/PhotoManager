@@ -18,20 +18,6 @@ function vkActivate() {
     vkStart();
 }
 
-function drawPhotoTile() {
-    let tileView;
-    tileView = '<div class="pm_frame_title pm_title" data-type="'+'">Фото плиткой</div><div class="pm_showInfo__tileView">';
-    for (let i=0; i<photoSet.length; i++) {
-        tileView += '<div class="pm_showInfo__tile" data-name="" data-id=""' +
-            '" data-owner="" data-type="">' +
-            '<img src="'+photoSet[i].photo_75+'" class="pm_showPhoto__middlePhoto">' + /* photo_130 */
-            '</div>'
-    }
-    tileView += '</div>';
-    windowOptionsVK.innerHTML = tileView;
-    console.log(photoSet);
-}
-
 function showBigPhoto() {
     bigPhotoArea.src = photoSet[0].photo_604;
     bigPhotoArea.dataset.i = '0';

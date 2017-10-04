@@ -49,22 +49,6 @@ function drawArea(result) {
     }
     createAreaOptionsList(cfg);
 }
-/* Заполняем окно optionsVK. Использовать для вёрстки списка с полями name, id, photo */
-function createAreaOptionsList(cfg) {
-    let output;
-    output = '<div class="pm_frame_title pm_title" data-type="'+'">'+cfg[1].title+'</div>';
-    for (let i = 0; i<cfg.length; i++) {
-        let type = cfg[i].type ? cfg[i].type : '';
-        output += '<div class="pm_frame_optionsCell" data-name="'+
-            cfg[i].name+'"'+' data-id="'+cfg[i].id+
-            '" data-owner="'+cfg[i].owner+'" data-type="'+type+'">' +
-            '<div class="">'+cfg[i].name+'</div>' +
-            '<img src="'+cfg[i].photo+'" class="pm_showPhoto__miniPhoto">' +
-            '</div>'
-    }
-    windowOptionsVK.innerHTML = output;
-    windowOptionsVK.addEventListener('click', optionsActivateVK);
-}
 /* TODO поправить. Работает только на div, при клике на надпись - не работает */
 function optionsActivateVK() {
     let cfg = {
