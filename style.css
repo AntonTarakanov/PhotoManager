@@ -4,13 +4,9 @@ body {
     flex-direction: column;
     color: #E3E3E3;
 }
-/* TODO временный стиль. Удалить. */
-.border {
-    border: 2px groove seagreen;
-}
 
-.borderTwo {
-    border: 2px groove wheat;
+.border__first {
+    border: 2px solid seagreen;
 }
 
 .pm {
@@ -21,15 +17,15 @@ body {
     height: 90%;
     width: 80%;
     min-width: 600px;
-    overflow: hidden; /* repeated */
     margin: 10px;
+    overflow: hidden; /* repeated */
 }
 
 .pm_action {
     height: 90%;
-    width: 15%;
-    overflow: hidden; /* repeated */
+    width: 20%;
     margin: 10px;
+    overflow: hidden; /* repeated */
 }
 
 .pm_show__bigInformation {
@@ -47,30 +43,32 @@ body {
 }
 
 .pm_action__fastConfiguration {
-    overflow: hidden; /* repeated */
-    height: 500px;
+    height: 446px;
     width: 100%;
-}
-/* TODO придумать более подходящее название */
-.pm_action__command {
     overflow: hidden; /* repeated */
+}
+
+.pm_action__command {
     height: 200px;
     width: 100%;
+    overflow: hidden; /* repeated */
 }
 
-
-
-
-
-
-.pm_leftTitle {
-    height: 100%;
-    width: 35px;
+.pm_action__information {
+    height: 50px;
+    width: 100%;
+    overflow: hidden; /* repeated */
 }
 
 .pm_showPhoto__bigPhoto {
     max-width: 100%;
     max-height: 100%;
+}
+
+
+.pm_leftTitle {
+    height: 100%;
+    width: 35px;
 }
 
 .pm_showPhoto__miniPhoto {
@@ -91,13 +89,13 @@ body {
 
 .pm_frame_commands {
     height: 380px;
-    width: 100%; /* 450px */
+    width: 100%;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
 }
 
-.pm_frame_title {
+.pm_action__title {
     text-align: center;
     margin-bottom: 10px;
 }
@@ -106,19 +104,13 @@ body {
     color: #222222;
     background: seagreen;
 }
-
+/* --- TODO переписать --- */
 .pm_frame_optionsCell {
     display: flex;
     justify-content: space-between;
     border: 1px groove lemonchiffon;
     margin: 5px;
     padding: 1px;
-}
-
-.pm_frame {
-    background: #222222;
-    border: 1px groove #E3E3E3;
-    margin: 20px;
 }
 
 .pm_showInfo__tileView {
@@ -134,13 +126,4 @@ body {
     width: 65px;
     border: 1px groove deeppink;
 }
-
-.pm_tools_around-button {
-    height: 45px;
-    width: 45px;
-}
-/* TODO убрать */
-.pm_no-bottom-margin {
-    margin-bottom: 0px !important;
-}
-
+/* ----------- */
