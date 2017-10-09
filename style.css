@@ -104,6 +104,13 @@ body {
     color: #222222;
     background: seagreen;
 }
+
+.pm_showPhoto__logo {
+    height: 46px;
+    width: 46px;
+    border-radius: 30px;
+    border: 2px solid seagreen;
+}
 /* --- TODO переписать --- */
 .pm_frame_optionsCell {
     display: flex;

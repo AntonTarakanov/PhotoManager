@@ -2,10 +2,9 @@
 /* TODO console - временно, пока не будет нормальной авторизации */
 function vkStart () {
     let source = getOptionsVK('source');
-    console.log("link for get token - " + showLinkForToken());
     createRequest(source);
 }
-/* делает запрос на VK. JSONP. */
+/* делает запрос на VK - JSONP. */
 /* TODO разобраться что делать при большом кол-ве запросов */
 /* TODO перепилить когда будет больше запросов и понятна архитектура их выполнения */
 /* reqMethod - для маршрутизации */
@@ -76,4 +75,15 @@ function responsePhoto(result) {
     photoSet = result.response.items;
     drawPhotoTile();
     showBigPhoto();
+}
+
+/*
+display: page - в отдельном окне || popup — всплывающее окно
+*/
+function getLinkAuthVk() {
+    let redirectURI = 'https://oauth.vk.com/blank.html',
+        url = 'https://oauth.vk.com/authorize?client_id='+getVkIdApp(),
+        display = 'page',
+        scope = 'friends,photos,messages,groups';
+    return url+'&display='+display+'&redirect_uri='+redirectURI+'&scope='+scope+'&response_type=token&v=5.52';
 }
